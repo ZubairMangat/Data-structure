@@ -112,7 +112,33 @@ void displayList() {
     }
     cout << endl; // Print a new line at the end
 }
+void deletion()
+{
+    int x=0;
+    cout <<"Enter the numbe that you want to delete :";
+    cin>>x;
+    Node* currentNode=head;
+    Node* previousNode=nullptr;
+    while(currentNode!=0&&currentNode->data!=x){
+        previousNode=currentNode;
+        currentNode=currentNode->next;
+        if(currentNode==nullptr){
+            cout<<"not present in list"<<endl;
+        }
+        else if (previousNode==nullptr){
+            head=head->next;
+            delete currentNode;
+        }
+        else {
+            previousNode->next=currentNode->next;
+            delete currentNode;
 
+        }
+        
+
+    }
+
+}
 int main() {
 // Node* head;
 // Node* second;
@@ -138,8 +164,10 @@ do
 	cout<<"2. InsertAtEnd"<<endl;
 	cout<<"3. Search number"<<endl;
 	cout<<"4. Displaylist"<<endl;
-	cout<<"5. Treverse the lisr"<<endl;
-	cout<<"6. Exit"<<endl;
+	cout<<"5. Treverse the list"<<endl;
+	cout<<"6. deletion "<<endl;
+    
+	cout<<"8. Exit"<<endl;
 	cout<<"Enter your Choice : ";
 	cin>>choice;
 	switch (choice)
@@ -171,18 +199,24 @@ do
 		/* code */
 		traverseList();
 		break;
-	case 6 /* constant-expression */:
+	case 6/* constant-expression */:
+		/* code */
+		// cout <<"Enter the number ";
+		// cin>>value;
+		deletion();
+		break;
+	case 8 /* constant-expression */:
 		/* code */
 
 		cleanupList();
 		break;
 	
 	default:
-		cout<<"Enter number 1 to 6";
+		cout<<"Enter number 1 to 8";
 		break;
 	}
 
-}while(choice!=6);
+}while(choice!=8);
     return 0; // End of the program
 }
 
