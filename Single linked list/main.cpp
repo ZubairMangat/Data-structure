@@ -44,6 +44,31 @@ void insertAtBeginning(int value) {
     newNode->next = head;     // Link new node to the current head
     head = newNode;           // Update head to the new node
 }
+//function to insert at sppecific location
+void insertAtSpecific(int value){
+	Node* newNode=new Node;
+	int data;
+	cout<<"Enter the data that you want to add in node";
+	cin>>data;
+	newNode->data=data;
+	newNode->next=nullptr;
+	Node* th=head;
+	if(head==nullptr){
+		cout<<"The Linked list is empty";
+	}
+	else{
+		while(th!=nullptr){
+			if(th->data==value){
+				newNode->next=th->next;
+				th->next=newNode;
+			}
+			th=th->next;
+		}
+
+	}
+
+
+}
 // Function to insert a new node at the end of the linked list
 void insertAtEnd(int value) {
     Node* newNode = new Node; // Create a new node
@@ -166,7 +191,7 @@ do
 	cout<<"4. Displaylist"<<endl;
 	cout<<"5. Treverse the list"<<endl;
 	cout<<"6. deletion "<<endl;
-    
+    cout<<"7. insert at sppecific location"<<endl;
 	cout<<"8. Exit"<<endl;
 	cout<<"Enter your Choice : ";
 	cin>>choice;
@@ -174,7 +199,7 @@ do
 	{
 	case 1/* constant-expression */:
 		/* code */
-		cout <<"Enter the number ";
+		cout <<"Enter the number : ";
 		cin>>value;
 		insertAtBeginning(value);
 		break;
@@ -204,6 +229,12 @@ do
 		// cout <<"Enter the number ";
 		// cin>>value;
 		deletion();
+		break;
+	case 7/* constant-expression */:
+		/* code */
+		cout <<"Enter the that number jis kay bad tum add karna cha tay ho :  ";
+		cin>>value;
+		insertAtSpecific(value);
 		break;
 	case 8 /* constant-expression */:
 		/* code */
